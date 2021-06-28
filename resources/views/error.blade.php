@@ -34,14 +34,14 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">Error</h5>
                     </a>
                 </div>
                 <div class="ml-auto col-auto">
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
+                    <a href="{{ url("/profile") }}" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
                         <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
+                            <img src="storage/{{Auth::user()->avatar}}" alt="">
                         </figure>
                     </a>
                 </div>
@@ -60,7 +60,7 @@
                         <h5 class="text-secondary mb-4 text-uppercase">Page not found </h5>
                         <p class="text-secondary">Page you are looking for is not avaialble kndly recheck URL or try after sometime.</p>
                         <br>
-                        <a href="/" class="btn btn-default rounded">Go back to Home</a>
+                        <a href="{{ url("/") }}" class="btn btn-default rounded">Go back to Home</a>
                     </div>
                 </div>
             </div>

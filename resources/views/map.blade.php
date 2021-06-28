@@ -1,7 +1,28 @@
 @extends('layouts.main')
 
 @section('context')
+<style>
+    #map {  width: 100%; height:200px;}
+        .marker {
+            background-image: url('img/marker.png');
+            background-size: cover;
+            width: 30px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+        .mapboxgl-popup-content {
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .directions-control {
+            display: none;
 
+}
+</style>
 <body class="body-scroll d-flex flex-column h-100 menu-overlay" data-page="homepage">
     <!-- screen loader -->
     <div class="container-fluid h-100 loader-display">
@@ -49,7 +70,7 @@
 
             <ul class="nav nav-pills flex-column ">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">
+                    <a class="nav-link active" href="{{ url("/") }}">
                         <div>
                             <span class="material-icons icon">account_balance</span>
                             Home
@@ -58,7 +79,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">
+                    <a class="nav-link" href="{{ url("/about") }}">
                         <div>
                             <span class="material-icons icon">info</span>
                             About Us
@@ -67,7 +88,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/map">
+                    <a class="nav-link" href="{{ url("/map") }}">
                         <div>
                             <i class="material-icons icon">map</i>
                             MAP
@@ -76,7 +97,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/balance">
+                    <a class="nav-link" href="{{ url("/balance") }}">
                         <div>
                             <i class="material-icons icon">account_balance_wallet</i>
                             Balance
@@ -85,7 +106,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile">
+                    <a class="nav-link" href="{{ url("/profile") }}">
                         <div>
                             <i class="material-icons icon">account_circle</i>
                             Profile
@@ -94,7 +115,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/pages">
+                    <a class="nav-link" href="{{ url("/pages") }}">
                         <div>
                             <span class="material-icons icon">layers</span>
                             Pages
@@ -104,7 +125,7 @@
                 </li>
             </ul>
             <div class="text-center">
-                <a href="/login" class="btn btn-outline-danger text-white rounded my-3 mx-auto">Sign out</a>
+                <a href="{{ url("/login") }}" class="btn btn-outline-danger text-white rounded my-3 mx-auto">Sign out</a>
             </div>
         </div>
     </div>
@@ -122,18 +143,18 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">Map</h5>
                     </a>
                 </div>
                 <div class="ml-auto col-auto pl-0">
-                    <a href="/notification" class=" btn btn-40 btn-link" >
+                    <a href="{{ url("/notification") }}" class=" btn btn-40 btn-link" >
                         <span class="material-icons">notifications_none</span>
                         <span class="counter"></span>
                     </a>
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
+                    <a href="{{ url("/profile") }}" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
                         <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
+                            <img src="storage/{{Auth::user()->avatar}}" alt="">
                         </figure>
                     </a>
                 </div>
@@ -149,8 +170,7 @@
                         <button onclick="getLocation()">Current position</button>
                     </div> -->
                     <div class="row my-3 justify-content-center">
-                        <div class="mapouter">
-                            <div id="map"></div>
+                        <div class="mapouter" id="map" style="width: 310px; border-radius: 5px;" >
                         </div>
                     </div>
 
@@ -163,11 +183,11 @@
                     </div>
                     <div class="card-body px-0 pt-0">
                         <div class="list-group list-group-flush border-top border-color">
-                            <a href="/neveda_datail" class="list-group-item list-group-item-action border-color">Parking Nevada</a>
-                            <a href="/mohamedV" class="list-group-item list-group-item-action border-color">Parking Avenue Mohammed V</a>
-                            <a href="/george" class="list-group-item list-group-item-action border-color">Parking George sand maarif</a>
-                            <a href="/el_behira" class="list-group-item list-group-item-action border-color">Parking EL Behira</a>
-                            <a href="/twin" class="list-group-item list-group-item-action border-color">Twin centre parking</a>
+                            <a href="{{ url("/neveda_datail") }}" class="list-group-item list-group-item-action border-color">Parking Nevada</a>
+                            <a href="{{ url("/mohamedV") }}" class="list-group-item list-group-item-action border-color">Parking Avenue Mohammed V</a>
+                            <a href="{{ url("/george") }}" class="list-group-item list-group-item-action border-color">Parking George sand maarif</a>
+                            <a href="{{ url("/el_behira") }}" class="list-group-item list-group-item-action border-color">Parking EL Behira</a>
+                            <a href="{{ url("/twin") }}" class="list-group-item list-group-item-action border-color">Twin centre parking</a>
                         </div>
                     </div>
                 </div>
@@ -179,48 +199,128 @@
     <div class="footer">
         <div class="row no-gutters justify-content-center">
             <div class="col-auto">
-                <a href="/" class="">
+                <a href="{{ url("/") }}" class="">
                     <i class="material-icons">home</i>
                     <p>Home</p>
                 </a>
             </div>
             <div class="col-auto">
-                <a href="/about" class="">
+                <a href="{{ url("/about") }}" class="">
                     <i class="material-icons">info</i>
                     <p>About Us</p>
                 </a>
             </div>
             <div class="col-auto">
-                <a href="/map" class="active">
+                <a href="{{ url("/map") }}" class="active">
                     <i class="material-icons">map</i>
                     <p>Map</p>
                 </a>
             </div>
             <div class="col-auto">
-                <a href="/balance" class="">
+                <a href="{{ url("/balance") }}" class="">
                     <i class="material-icons">account_balance_wallet</i>
                     <p>Balance</p>
                 </a>
             </div>
             <div class="col-auto">
-                <a href="/profile" class="">
+                <a href="{{ url("/profile") }}" class="">
                     <i class="material-icons">account_circle</i>
                     <p>Profile</p>
                 </a>
             </div>
         </div>
     </div>
-    <style>
-        #map {  width: 100%; height:200px;}
-    </style>
+
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiYWJkb21pc2JhaDEwIiwiYSI6ImNrcGI4ZmJnODEwNDAyeW9naW90ZGw2NXUifQ.OjDdCAqfusdzvPpMJ1dHeg';
+    var geojson = {
+        'type': 'FeatureCollection',
+        'features': [
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-7.60203, 33.59417]
+                },
+                'properties': {
+                    'title': 'Mapbox',
+                    'description': 'Parking Avenue Mohammed V'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-7.62089, 33.59048]
+                },
+                'properties': {
+                    'title': 'Mapbox',
+                    'description': 'PARKING NEVADA'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-7.63762, 33.57636]
+                },
+                'properties': {
+                    'title': 'Mapbox',
+                    'description': 'Parking George sand maarif'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-7.62452, 33.59904]
+                },
+                'properties': {
+                    'title': 'Mapbox',
+                    'description': 'Parking EL Behira'
+                }
+            },
+            {
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Point',
+                    'coordinates': [-7.63196, 33.58616]
+                },
+                'properties': {
+                    'title': 'Mapbox',
+                    'description': 'Twin centre parking'
+                }
+            }
+        ]
+    };
+
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/abdomisbah10/ckpqyfx9r2eke18ps1ax7l3ty',
-center: [-79.4512, 43.6568],
-zoom: 13
+center: [-7.63196, 33.58616],
+zoom: 11
 });
+    // add markers to map
+    geojson.features.forEach(function (marker) {
+// create a HTML element for each feature
+        var el = document.createElement('div');
+        el.className = 'marker';
+
+// make a marker for each feature and add it to the map
+        new mapboxgl.Marker(el)
+            .setLngLat(marker.geometry.coordinates)
+            .setPopup(
+                new mapboxgl.Popup({ offset: 25 }) // add popups
+                    .setHTML(
+                        '<h3>' +
+                        marker.properties.title +
+                        '</h3><p>' +
+                        marker.properties.description +
+                        '</p>'
+                    )
+            )
+            .addTo(map);
+    });
 
 
 
@@ -232,5 +332,11 @@ enableHighAccuracy: true
 trackUserLocation: true
 })
 );
+    map.addControl(
+        new MapboxDirections({
+            accessToken: mapboxgl.accessToken
+        }),
+        'top-left'
+    );
 </script>
 @endsection

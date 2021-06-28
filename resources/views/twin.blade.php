@@ -35,17 +35,10 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">Twin centre parking</h5>
                     </a>
                 </div>
-                <!-- <div class="ml-auto col-auto">
-                    <a href="profile.html" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
-                        <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
-                        </figure>
-                    </a>
-                </div> -->
             </div>
         </header>
 
@@ -73,7 +66,7 @@
                         <hr style="margin-top: -20px; margin-bottom: -5px;">
                         <div class="card-body" >
                             <h6> The price to pay per hour : 7 DH</h6><br/>
-                            <button onclick="window.location.href = '/place';" type="button" class="btn btn-primary btn-block rounded">Reserve your place</button>
+                            <button onclick="window.location.href = '{{ url('/place') }}';" type="button" class="btn btn-primary btn-block rounded">Reserve your place</button>
                         </div>
 
 

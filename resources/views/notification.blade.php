@@ -35,18 +35,18 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">Notification</h5>
                     </a>
                 </div>
                 <div class="ml-auto col-auto pl-0">
-                    <a href="/notification" class=" btn btn-40 btn-link" >
+                    <a href="{{ url("/notification") }}" class=" btn btn-40 btn-link" >
                         <span class="material-icons">notifications_none</span>
                         <span class="counter"></span>
                     </a>
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
+                    <a href="{{ url("/profile") }}" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
                         <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
+                            <img src="storage/{{Auth::user()->avatar}}" alt="">
                         </figure>
                     </a>
                 </div>
@@ -61,7 +61,7 @@
                     <div class="card-body px-0">
                         <div class="list-group list-group-flush">
                             @foreach ($notifications as $item)
-                                <a class="list-group-item" href="#">
+                                <a class="list-group-item" href="{{ url("#") }}">
                                     <div class="row">
                                         <div class="col-auto align-self-center">
                                             <i class="material-icons text-default">check_circle</i>

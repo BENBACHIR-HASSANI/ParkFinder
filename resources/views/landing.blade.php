@@ -82,10 +82,10 @@
     <div class="footer no-bg-shadow py-3">
         <div class="row justify-content-center">
             <div class="col">
-                <a href="/login" class="btn btn-default rounded btn-block">Login</a>
+                <a href="{{ url("/login") }}" class="btn btn-default rounded btn-block">Login</a>
             </div>
             <div class="col">
-                <a href="/signup" class="btn btn-outline-default rounded btn-block">Register</a>
+                <a href="{{ url("/signup") }}" class="btn btn-outline-default rounded btn-block">Register</a>
             </div>
         </div>
     </div>

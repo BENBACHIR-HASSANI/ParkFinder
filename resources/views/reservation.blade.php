@@ -35,18 +35,18 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">Reservation</h5>
                     </a>
                 </div>
                 <div class="ml-auto col-auto">
-                    <a href="/notification" class=" btn btn-40 btn-link" >
+                    <a href="{{ url("/notification") }}" class=" btn btn-40 btn-link" >
                         <span class="material-icons">notifications_none</span>
                         <span class="counter"></span>
                     </a>
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
+                    <a href="{{ url("/profile") }}" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
                         <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
+                            <img src="storage/{{Auth::user()->avatar}}" alt="">
                         </figure>
                     </a>
                 </div>
@@ -66,16 +66,7 @@
                         </h6>
                     </div>
                     <div class="card-body">
-                        <!-- <div class="form-group float-label active">
-                            <select class="form-control">
-                                <option selected>PARKING NEVADA</option>
-                                <option>Parking Avenue Mohammed V</option>
-                                <option>Parking George sand maarif</option>
-                                <option>Parking EL Behira</option>
-                                <option>Twin centre parking</option>
-                             </select>
-                             <label class="form-control-label">Parking name</label>
-                         </div> -->
+
                          <!-- <div class="form-group float-label active">
                             <select class="form-control">
                                 <option selected>1</option>
@@ -86,8 +77,18 @@
                              </select>
                             <label class="form-control-label">Number of hours to stay in the parking</label>
                         </div> -->
-                        <form method="POST" action='/qr'>
+                        <form method="POST" action='{{ url('/qr') }}'>
                             @csrf
+                            <div class="form-group float-label active">
+                            <select class="form-control" name="parking_name">
+                                <option selected>PARKING NEVADA</option>
+                                <option>Parking Avenue Mohammed V</option>
+                                <option>Parking George sand maarif</option>
+                                <option>Parking EL Behira</option>
+                                <option>Twin centre parking</option>
+                             </select>
+                             <label class="form-control-label">Parking name</label>
+                         </div>
                             <div class="form-group float-label active">
                                 <input type="time" class="form-control" name="dateTime_start_reservation">
                                 <label class="form-control-label">Arriving time</label>
@@ -95,6 +96,10 @@
                             <div class="form-group float-label active">
                                 <input type="time" class="form-control" name="dateTime_end_reservation">
                                 <label class="form-control-label">End time</label>
+                            </div>
+                            <div class="form-group float-label active">
+                                <input type="date" class="form-control" name="date">
+                                <label class="form-control-label">Date</label>
                             </div>
                             <div class="form-group float-label active">
                                 <input type="text" class="form-control" name="Matricule">

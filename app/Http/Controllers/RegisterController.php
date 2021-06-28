@@ -32,6 +32,7 @@ class RegisterController extends Controller
             $user->NumberPhone=$request->NumberPhone;
             $user->address=$request->address;
 
+
             $user->password=Hash::make($request->password);
 
 
@@ -58,7 +59,7 @@ class RegisterController extends Controller
 
             $user->save();
 
-            return view('confirm_account')->with('status','User added successfully');
+            return view('thank_you')->with('status','User added successfully');
             }  else{
                 return back()->with('error','Password error');
             }

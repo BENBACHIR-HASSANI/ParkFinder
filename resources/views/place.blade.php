@@ -93,18 +93,18 @@ transform: skew(-10deg);
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">Choose your place</h5>
                     </a>
                 </div>
                 <div class="ml-auto col-auto">
-                    <a href="/notification" class=" btn btn-40 btn-link" >
+                    <a href="{{ url("/notification") }}" class=" btn btn-40 btn-link" >
                         <span class="material-icons">notifications_none</span>
                         <span class="counter"></span>
                     </a>
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
+                    <a href="{{ url("/profile") }}" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
                         <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
+                            <img src="storage/{{Auth::user()->avatar}}" alt="">
                         </figure>
                     </a>
                 </div>
@@ -127,22 +127,22 @@ transform: skew(-10deg);
                         <div class="Parking">
                             <div class="rowsParking">
                                 <span class="inUsed" style="margin-left: -15px;">A1</span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A2</button></span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A3</button></span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A4</button></span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A5</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A2</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A3</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A4</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A5</button></span>
                                 <span class="reserved">A6</span>
                                 <span class="reserved">A7</span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A8</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">A8</button></span>
                                 <span class="inUsed">A9</span>
                             </div>
                             <div class="rowsParking">
                                 <span>9</span>
                                 <span class="inUsed">10</span>
                                 <span>11</span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">12</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">12</button></span>
                                 <span class="inUsed">13</span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">14</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">14</button></span>
                                 <span class="reserved">15</span>
                                 <span>16</span>
                                 <span>17</span>
@@ -151,9 +151,9 @@ transform: skew(-10deg);
                                 <span>18</span>
                                 <span class="inUsed">19</span>
                                 <span>20</span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">21</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">21</button></span>
                                 <span>22</span>
-                                <span class="free"><button onclick="window.location.href = '/reservation';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">23</button></span>
+                                <span class="free"><button onclick="window.location.href = '{{ url('/reservation') }}';" style="background-color: Transparent; background-repeat:no-repeat; border: none; cursor:pointer; overflow: hidden; outline:none; margin: -5px;">23</button></span>
                                 <span class="reserved">24</span>
                                 <span>25</span>
                                 <span>26</span>

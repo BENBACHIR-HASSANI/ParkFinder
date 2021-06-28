@@ -37,13 +37,6 @@
                 </div>
                 <div class="text-left col align-self-center">
                 </div>
-                <div class="ml-auto col-auto">
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
-                        <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
-                        </figure>
-                    </a>
-                </div>
             </div>
         </header>
 
@@ -56,7 +49,7 @@
             <div class="container">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="/thank_you">
+                        <form method="POST" action="{{ url("/thank_you") }}">
                             @csrf
                                 <div class="form-group float-label mb-0">
                                     <input type="code" class="form-control" autofocus="">

@@ -38,7 +38,7 @@
 
                 </div>
                 <div class="ml-auto col-auto align-self-center">
-                    <a href="/signup" class="text-white">
+                    <a href="{{ url("/signup") }}" class="text-white">
                         Sign up
                     </a>
                 </div>
@@ -52,7 +52,7 @@
                     <div class="row justify-content-center">
                         <div class="col-11 col-sm-7 col-md-6 col-lg-5 col-xl-4">
                             <h2 class="font-weight-normal mb-5">Login into<br>your account</h2>
-                            <form method="POST" action='/'>
+                            <form method="POST" action='{{ url("/index") }}'>
                                 @csrf
                                 @error('email')
                                     <div class="alert-danger">{{ $message }}</div>
@@ -84,4 +84,5 @@
             </div>
         </div>
     </div>
+</form>
 @endsection

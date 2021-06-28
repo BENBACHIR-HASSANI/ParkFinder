@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,12 +11,19 @@ class HomeController extends Controller
 {
     public function index(){
         if(Auth::check()){
-            $profile_status = 'true';
+            $reservations=Reservation::where('username', Auth::user()->username)->orderBy('id', 'DESC')->get();
+            $reservationsCount=Reservation::where('username', Auth::user()->username)->count();
+            $users=User::all()->where('username', Auth::user()->username);
+            $amount=Reservation::where('username', Auth::user()->username)->sum('amount');
+
+            // $userConnect=User::where('username', Auth::user()->username);
+            //dd($amount);
+        return view ('index', ['reservations' => $reservations, 'reservationsCount' => $reservationsCount, 'users' => $users, 'amount' =>$amount]);
         }else{
-            $profile_status = 'false';
+            return view('login');
         }
 //dd($profile_status);
-      return redirect ('/index')->with('profile_status' , $profile_status);
+
     }
     public function update(Request $request, $id){
 

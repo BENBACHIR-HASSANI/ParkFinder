@@ -17,14 +17,21 @@ class ReservationController extends Controller
         $validated = $request->validate([
             'dateTime_start_reservation' => 'required',
             'dateTime_end_reservation' => 'required',
+            'date' => 'required',
             'Matricule' => 'required|max:20',
         ]);
 
         $reservation = new Reservation;
+        $reservation->username=Auth::user()->username;
         $reservation->dateTime_start_reservation=$request->dateTime_start_reservation;
         $reservation->dateTime_end_reservation=$request->dateTime_end_reservation;
+        $reservation->date=$request->date;
         $reservation->Matricule=$request->Matricule;
+        $reservation->parking_name=$request->parking_name;
+        $reservation->amount=50;
         $reservation->save();
+
+        $reservation_id = Reservation::where('parking_name',$request->parking_name && 'Matricule',$request->Matricule);
 
 
         $notification = new Notifications;
@@ -34,7 +41,8 @@ class ReservationController extends Controller
         $notification->date=$date;
         $notification->username=Auth::user()->username;
         $notification->save();
-        return view('qr');
+       // dd($reservation_id);
+        return view('qr')->with('reservation_id',$reservation_id);
 
         //$reservation->notify(new ReservationNotification());
 

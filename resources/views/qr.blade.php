@@ -50,83 +50,6 @@
                 </div>
             </div>
 
-            <ul class="nav nav-pills flex-column ">
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.html">
-                        <div>
-                            <span class="material-icons icon">account_balance</span>
-                            Home
-                        </div>
-                        <span class="arrow material-icons">chevron_right</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="analytics.html">
-                        <div>
-                            <span class="material-icons icon">insert_chart</span>
-                            Analytics
-                        </div>
-                        <span class="arrow material-icons">chevron_right</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="refer_friends.html">
-                        <div>
-                            <span class="material-icons icon">perm_contact_calendar</span>
-                            Refer Friends
-                        </div>
-                        <span class="arrow material-icons">chevron_right</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="gift_cards.html">
-                        <div>
-                            <span class="material-icons icon">card_giftcard</span>
-                            Gift Cards
-                        </div>
-                        <span class="arrow material-icons">chevron_right</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="my_orders.html">
-                        <div>
-                            <span class="material-icons icon">shopping_bag</span>
-                            My Orders
-                        </div>
-                        <span class="arrow material-icons">chevron_right</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="setting.html">
-                        <div>
-                            <span class="material-icons icon">settings</span>
-                            Settings
-                        </div>
-                        <span class="arrow material-icons">chevron_right</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages.html">
-                        <div>
-                            <span class="material-icons icon">layers</span>
-                            Pages
-                        </div>
-                        <span class="arrow material-icons">chevron_right</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="controls.html">
-                        <div>
-                            <span class="material-icons icon">widgets</span>
-                            Controls
-                        </div>
-                        <span class="arrow material-icons">chevron_right</span>
-                    </a>
-                </li>
-            </ul>
-            <div class="text-center">
-                <a href="login.html" class="btn btn-outline-danger text-white rounded my-3 mx-auto">Sign out</a>
-            </div>
         </div>
 
     </div>
@@ -144,18 +67,18 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">QR-Code</h5>
                     </a>
                 </div>
                 <div class="ml-auto col-auto pl-0">
-                    <a href="/notification" class=" btn btn-40 btn-link" >
+                    <a href="{{ url("/notification") }}" class=" btn btn-40 btn-link" >
                         <span class="material-icons">notifications_none</span>
                         <span class="counter"></span>
                     </a>
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
+                    <a href="{{ url("/profile") }}" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
                         <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
+                            <img src="storage/{{Auth::user()->avatar}}" alt="">
                         </figure>
                     </a>
                 </div>
@@ -183,16 +106,28 @@
         <div class="main-container h-50">
             <div class="container mt-3 mb-4 text-center">
                 <p class="text-default-secondary">Ask to scan this QR-Code<br>to accept money </p>
-                <div class="avatar avatar-120 rounded mb-3">
-                    <div class="background">
-                        <img src="img/QR.png" alt="">
+                <div class="avatar avatar-120 ">
+                    <div class="background" id="qrcode">
+
                     </div>
                 </div>
 
                 <h2 style="margin-right: 120px;"><img src="img/TechCoins1.png" style="width:25px; float: left; margin-left: 120px; margin-top: 7px;" />
-                     60</h2>
+                     50</h2>
                 <p class="text-secondary">Total Price</p>
             </div>
         </div>
     </main>
+
+    <script>
+
+        var qrcode = new QRCode("qrcode",
+        { text: "{id:1,matricule:'23/jgfhd'}",
+         width: 128,
+          height: 128,
+           colorDark : "#000000",
+            colorLight : "#ffffff",
+             correctLevel : QRCode.CorrectLevel.H
+             });
+    </script>
 @endsection

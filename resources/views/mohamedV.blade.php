@@ -35,7 +35,7 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">Parking Avenue Mohammed V</h5>
                     </a>
                 </div>
@@ -74,7 +74,7 @@
                         <hr style="margin-top: -20px; margin-bottom: -5px;">
                         <div class="card-body" >
                             <h6> The price to pay per hour : 6 DH</h6><br/>
-                            <button onclick="window.location.href = '/place';" type="button" class="btn btn-primary btn-block rounded"  >Reserve your place</button>
+                            <button onclick="window.location.href = '{{ url('/place') }}';" type="button" class="btn btn-primary btn-block rounded"  >Reserve your place</button>
                         </div>
 
 

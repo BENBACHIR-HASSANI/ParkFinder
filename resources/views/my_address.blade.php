@@ -35,17 +35,17 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">My Address</h5>
                     </a>
                 </div>
                 <div class="ml-auto col-auto">
-                    <a href="/addaddress" class="btn btn-40 text-white">
+                    {{-- <a href="/addaddress" class="btn btn-40 text-white">
                         <span class="material-icons vm" style="margin-top: 7px;">add</span>
-                    </a>
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
+                    </a> --}}
+                    <a href="{{ url("/profile") }}" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
                         <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
+                            <img src="storage/{{Auth::user()->avatar}}" alt="">
                         </figure>
                     </a>
                 </div>
@@ -58,7 +58,7 @@
             <div class="container">
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h6>BENBACHIR HASSANI Fatima Zahra</h6>
+                        <h6>{{Auth::user()->username}}</h6>
                         <address>
                             Belvedere <br>
                             boulevard oujda.<br>
@@ -72,7 +72,7 @@
                 </div>
                 <div class="card mb-4">
                     <div class="card-header">
-                        <h6 class="subtitle mb-0">BENBACHIR HASSANI Fatima Zahra</h6>
+                        <h6 class="subtitle mb-0">{{Auth::user()->username}}</h6>
                     </div>
                     <div class="d-block h-150">
                         <iframe src="https://maps.google.com/maps?q=Belvedere%20boulevard%20oujda.Casablanca,%20Morocco&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>

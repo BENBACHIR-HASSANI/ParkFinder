@@ -16,10 +16,14 @@ class NotificationsController extends Controller
      */
     public function notification()
     {
-        $notifications= Notifications::all()->where('username', Auth::user()->username);
+        if(Auth::check()){
+        $notifications= Notifications::where('username', Auth::user()->username)->orderBy('date', 'DESC')->get();
         //dd($notifications);
 
         return view('notification', ['notifications'=>$notifications]);
+    }else{
+        return view('login');
+    }
     }
 
     /**

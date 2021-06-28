@@ -35,17 +35,17 @@
                     </button>
                 </div>
                 <div class="text-left col align-self-center">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{ url("#") }}">
                         <h5 class="mb-0">My Cards</h5>
                     </a>
                 </div>
                 <div class="ml-auto col-auto">
-                    <a href="/addcard" class="btn btn-40 text-white">
+                    {{-- <a href="/addcard" class="btn btn-40 text-white">
                         <span class="material-icons vm" style="margin-top: 7px;">add</span>
-                    </a>
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
+                    </a> --}}
+                    <a href="{{ url("/profile") }}" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
                         <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
+                            <img src="storage/{{Auth::user()->avatar}}" alt="">
                         </figure>
                     </a>
                 </div>
@@ -80,7 +80,7 @@
                                 <p class="small ">Expiry date</p>
                             </div>
                             <div class="col-auto align-self-center text-right">
-                                <p class="mb-0">BENBACHIR Fatima Zahra</p>
+                                <p class="mb-0">{{Auth::user()->username}}</p>
                                 <p class="small">Card Holder</p>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
                                 <p class="small ">Expiry date</p>
                             </div>
                             <div class="col-auto align-self-center text-right">
-                                <p class="mb-0">BENBACHIR Fatima Zahra</p>
+                                <p class="mb-0">{{Auth::user()->username}}</p>
                                 <p class="small">Card Holder</p>
                             </div>
                         </div>

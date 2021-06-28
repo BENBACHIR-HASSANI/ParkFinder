@@ -37,13 +37,6 @@
                 <div class="text-left col align-self-center">
 
                 </div>
-                <div class="ml-auto col-auto">
-                    <a href="/profile" class="avatar avatar-30 shadow-sm rounded-circle ml-2">
-                        <figure class="m-0 background">
-                            <img src="img/user1.png" alt="">
-                        </figure>
-                    </a>
-                </div>
             </div>
         </header>
 

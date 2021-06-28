@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\TestController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,14 +32,11 @@ Route::get('/about', function () {
 Route::get('/map', function () {
     return view('map');
 });
-// Route::get('/balance', function () {
-//     return view('balance');
-// });
+Route::get('/balance', [BalanceController::class, 'balance_view'])->name('balance_view');
 Route::post('/balance/{id}', [BalanceController::class, 'balance'])->name('balance');
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/profile', [ProfileController::class, 'profile'])->name('profile');
+
 Route::get('/notification', [NotificationsController::class, 'notification'])->name('notification');
 
 
@@ -52,12 +52,11 @@ Route::get('/login', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
-
-Route::post('/confirm_account', [RegisterController::class, 'confirm_account'])->name('confirm_account');
-Route::post('/', [RegisterController::class, 'checklogin'])->name('checklogin');
+//Route::post('/confirm_account', [RegisterController::class, 'confirm_account'])->name('confirm_account');
+Route::post('/index', [RegisterController::class, 'checklogin'])->name('checklogin');
 Route::get('/logout', [RegisterController::class, 'logout'])->name('logout');
 
-Route::post('/thank_you', [RegisterController::class, 'thank_you'])->name('thank_you');
+Route::post('/thank_you', [RegisterController::class, 'confirm_account'])->name('confirm_account');
 
 
 Route::get('/neveda_datail', function () {
@@ -110,3 +109,6 @@ Route::get('/error', function () {
 });
 Route::get('/test', [TestController::class, 'index']);
 
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
