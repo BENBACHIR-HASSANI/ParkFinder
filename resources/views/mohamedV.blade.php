@@ -73,7 +73,7 @@
                         </div>
                         <hr style="margin-top: -20px; margin-bottom: -5px;">
                         <div class="card-body" >
-                            <h6> The price to pay per hour : 6 DH</h6><br/>
+                            <h6> The price to pay per hour : <img src="img/TechCoins1.png" width="18px"/>50</h6><br/>
                             <button onclick="window.location.href = '{{ url('/place') }}';" type="button" class="btn btn-primary btn-block rounded"  >Reserve your place</button>
                         </div>
 

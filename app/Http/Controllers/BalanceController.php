@@ -30,8 +30,9 @@ class BalanceController extends Controller
 
 
                 $users= User::all()->where('username', Auth::user()->username);
-
+                //dd($users);
                 return redirect('/balance')->with('users',$users);
+
             }else{
                 return view('login');
             }
@@ -43,6 +44,7 @@ class BalanceController extends Controller
         public function balance_view(){
             if(Auth::check()){
             $users= User::all()->where('username', Auth::user()->username);
+           // dd($users);
             return view('balance')->with('users', $users);
         }else{
             return view('login');

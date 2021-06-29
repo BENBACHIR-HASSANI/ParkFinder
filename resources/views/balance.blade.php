@@ -169,6 +169,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post" action="/balance/{{Auth::user()->id}}">
+
                             @csrf
                             <div class="form-group float-label active">
                                 <select name="inc_sold" class="form-control">
